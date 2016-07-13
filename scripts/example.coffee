@@ -18,6 +18,16 @@ module.exports = (robot) ->
   robot.hear /test3/i, (res) ->
     res.emote "Test3"
 
+  robot.hear /location (.*)/, (msg) ->
+    request = robot.http("https://maps.googleapis.com/maps/api/geocode/json")
+                   .query(address: msg.match[1])
+                   .get()
+    request (err, res, body) ->
+      json = JSON.parse body
+      location = json['results'][0]['geometry']['location']
+
+      msg.send "#{location['lat']}, #{location['lng']}"
+
    robot.hear /badger/i, (res) ->
      res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
 
