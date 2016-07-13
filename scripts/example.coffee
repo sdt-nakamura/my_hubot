@@ -9,6 +9,14 @@
 #   These are from the scripting documentation: https://github.com/github/hubot/blob/master/docs/scripting.md
 
 module.exports = (robot) ->
+  robot.hear /test1/i, (res) ->
+    res.send "Test1"
+
+  robot.hear /test2/i, (res) ->
+    res.reply "Test2"
+
+  robot.hear /test3/i, (res) ->
+    res.emote "Test3"
 
    robot.hear /badger/i, (res) ->
      res.send "Badgers? BADGERS? WE DON'T NEED NO STINKIN BADGERS"
