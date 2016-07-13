@@ -9,6 +9,9 @@
 #   These are from the scripting documentation: https://github.com/github/hubot/blob/master/docs/scripting.md
 
 module.exports = (robot) ->
+  robot.hear /test/i, (res) ->
+    res.send "My Hubot Test 2 on serverx"
+
   robot.hear /test1/i, (res) ->
     res.send "Test1"
 
